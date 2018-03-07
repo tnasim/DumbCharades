@@ -1,6 +1,6 @@
 %M = csvread("task1output/ABOUT.csv",0,2,[0 2 10 10])
 %M = csvread("task1output/ABOUT.csv",0,2,[0 0 67 45])
-M = csvread("task1output/ABOUT.csv",0,2);
+M = csvread("../output/task1/ABOUT.csv",0,2);
 M = M(2:end, 3:end-1);
 %disp(M)
 dim = size(M);
