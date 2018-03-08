@@ -24,8 +24,20 @@ standardized_M = zscore(TASK1_M, 0, 2);
 graphOpt = ["g-", "b-", "k-", "c-", "r-", "g--", "b--", "k--", "c--", "r--", "g-^", "b-^", "k-^", "c-^", "r-^", "g:*", "b:*", "k:*", "c:*", "r:*"];
 
 sens1 = uint32(Sensor.ALX);
+
 performDWT(standardized_M, sens1, graphOpt);
-%avg = calculateAverage(TASK1_M, sens1);
+
+avg = calculateAverage(TASK1_M, sens1);
+figure;
+plot(calcDWT(avg));
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Calculate DWT for a single row
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function CA = calcDWT(Row)
+    [CA,CH,CV,CD] = dwt2(Row,'db1');
+    return;
+end
 %disp(avg(1, 1:end));
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -34,29 +46,32 @@ performDWT(standardized_M, sens1, graphOpt);
 function a = performDWT(M, sensorRow, plotType)
     global TOTAL_ROWS;
     global TOTAL_SENSORS;
-    
     figure;
     k = 1;
     for i = sensorRow:TOTAL_SENSORS:TOTAL_ROWS
         Row = M(i, 3:end-1);
-        disp(i);
-        if i>sensorRow
-            hold on;
-        end
-        [CA,CH,CV,CD] = dwt2(Row,'db1');
-        disp(plotType(k));
-        plot(CA, plotType(k));
+        complexPlot(Row, sensorRow, i);
         k = k+1;
         if k>20
             k = 1;
-        end
-        if i>sensorRow
-            hold off;
         end
     end
     title(['Sensor ', int2str(sensorRow), ' data']);
 end
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Complex plot for each row on the same figure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function a = complexPlot(Row,initialVal,currentVal)
+        if currentVal>initialVal
+            hold on;
+        end
+        plot(calcDWT(Row));
+        if currentVal>initialVal
+            hold off;
+        end
+end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Return row containing the average of the matrix M
@@ -66,7 +81,6 @@ function avg = calculateAverage(M, sensorNumber)
     global TOTAL_SENSORS;
     global TOTAL_COLUMNS;
     
-    figure;
     k = 0;
     avg = zeros(TOTAL_COLUMNS-2);
     for i = sensorNumber:TOTAL_SENSORS:TOTAL_ROWS
