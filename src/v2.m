@@ -20,7 +20,9 @@ for j = 1:37
         timeStamp = tempFilename(len - 8 + 1:len);
         fileName = [IntermediateDataDir,'/',tempFolderPath,'/',actionName,'.csv'];
         if exist(fileName, 'file') ~= 2
+        
             tempData = readData(tempFolderPath,actionName,timeStamp);
+
             [x,y] = size(tempData);
             if y ==47
                 writeData(tempFolderPath,actionName,tempData);
@@ -96,7 +98,7 @@ function a = writeData(tempFolderPath,actionName,tempData)
         fprintf(fileID, '\n');
     end
     fclose(fileID);
-    end
+end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FUNCTION: READ DATA
