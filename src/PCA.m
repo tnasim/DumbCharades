@@ -75,5 +75,21 @@ classdef PCA
             end
         end
         
+        function ABOUT_FEATURE_MAT = getFeatureMatrix_ABOUT()
+            gest = 'about';
+            
+            M = PCA.readOneSensorData(gest, Sensor.OPR);
+
+            OPR_MAD = PCA.getFeatureMatrix(M,'MAD');
+            OPR_RMS = PCA.getFeatureMatrix(M,'RMS');
+
+            M = PCA.readOneSensorData(gest, Sensor.EMG0R);
+            EMG0R_MAD = PCA.getFeatureMatrix(M,'MAD');
+
+            % Concat all the feature columns to get
+            %  the whole feature matrix
+            ABOUT_FEATURE_MAT = [OPR_MAD, OPR_RMS, EMG0R_MAD];
+        end
+        
     end
 end
