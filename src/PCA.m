@@ -17,7 +17,7 @@ classdef PCA
             MaxCol = 55;
             l = uint32(sensor);
             dirListing = dir(PCA.IntermediateDataDir);
-            disp(gesture);
+            %disp(gesture);
             for i = 3:length(dirListing)
                 tempFoldername = dirListing(i).name;
                 %disp(tempFoldername);
@@ -35,7 +35,7 @@ classdef PCA
                             fileName = strjoin(fileName, '');
                         end
                     %end
-                    disp(fileName);
+                    
                     if exist(fileName, 'file') == 2
                         temp = csvread(fileName,0, 0);
                         [x,z] = size(temp);
