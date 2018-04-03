@@ -8,8 +8,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
-ABT_FEATURE_MAT = PCA.getFeatureMatrix_ABOUT();
+%{
+ABT_FEATURE_MAT = PCA.getFeatureMatrix_ABOUT('about');
 [coeff,score,latent,tsquared,explained] = pca(ABT_FEATURE_MAT);
 biplot(coeff(:,1:2),'scores',score(:,1:2),'varlabels',{'v_1','v_2','v_3'});
 title('PCA plot for ABOUT');
@@ -20,14 +20,14 @@ pareto(explained);
 xlabel('Principal Component');
 ylabel('Variance Explained (%)');
 title('SCREE plot for ABOUT');
-
+%}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DEAF
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-FEATURE_MAT = PCA.getFeatureMatrix_DEAF();
+%{
+FEATURE_MAT = PCA.getFeatureMatrix_DEAF('deaf');
 [coeff1,score,latent,tsquared,explained] = pca(FEATURE_MAT);
 biplot(coeff1(:,1:2),'scores',score(:,1:2),'varlabels',{'v_1','v_2','v_3', 'v_4'});
 %PCA.plotev(coeff1);
@@ -39,13 +39,13 @@ pareto(explained);
 xlabel('Principal Component');
 ylabel('Variance Explained (%)');
 title('SCREE plot for DEAF');
-
+%}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % AND
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-FEATURE_MAT = PCA.getFeatureMatrix_AND();
+%{
+FEATURE_MAT = PCA.getFeatureMatrix_AND('and');
 [coeff1,score,latent,tsquared,explained] = pca(FEATURE_MAT);
 biplot(coeff1(:,1:2),'scores',score(:,1:2),'varlabels',{'v_1','v_2','v_3', 'v_4'});
 title('PCA plot for AND');
@@ -56,14 +56,14 @@ pareto(explained);
 xlabel('Principal Component');
 ylabel('Variance Explained (%)');
 title('Scree plot  for AND');
-
+%}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % HEARING
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-FEATURE_MAT = PCA.getFeatureMatrix_HEARING();
+%{
+FEATURE_MAT = PCA.getFeatureMatrix_HEARING('hearing');
 [coeff1,score,latent,tsquared,explained] = pca(FEATURE_MAT);
 biplot(coeff1(:,1:2),'scores',score(:,1:2),'varlabels',{'v_1','v_2','v_3', 'v_4'});
 title('PCA plot for HEARING');
@@ -74,13 +74,13 @@ pareto(explained);
 xlabel('Principal Component');
 ylabel('Variance Explained (%)');
 title('Scree plot  for HEARING');
-
+%}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CAN
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-FEATURE_MAT = PCA.getFeatureMatrix_CAN();
+%{
+FEATURE_MAT = PCA.getFeatureMatrix_CAN('can');
 [coeff1,score,latent,tsquared,explained] = pca(FEATURE_MAT);
 biplot(coeff1(:,1:2),'scores',score(:,1:2),'varlabels',{'v_1','v_2','v_3', 'v_4'});
 title('PCA plot for CAN');
@@ -91,13 +91,13 @@ pareto(explained);
 xlabel('Principal Component');
 ylabel('Variance Explained (%)');
 title('Scree plot  for CAN');
-
+%}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % COP
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-FEATURE_MAT = PCA.getFeatureMatrix_COP();
+%{
+FEATURE_MAT = PCA.getFeatureMatrix_COP('cop');
 [coeff1,score,latent,tsquared,explained] = pca(FEATURE_MAT);
 biplot(coeff1(:,1:2),'scores',score(:,1:2),'varlabels',{'v_1','v_2','v_3'});
 title('PCA plot for COP');
@@ -108,14 +108,14 @@ pareto(explained);
 xlabel('Principal Component');
 ylabel('Variance Explained (%)');
 title('Scree plot  for COP');
-
+%}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DECIDE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-FEATURE_MAT = PCA.getFeatureMatrix_DECIDE();
+%{
+FEATURE_MAT = PCA.getFeatureMatrix_DECIDE('decide');
 [coeff1,score,latent,tsquared,explained] = pca(FEATURE_MAT);
 biplot(coeff1(:,1:2),'scores',score(:,1:2),'varlabels',{'v_1','v_2','v_3', 'v_4'});
 title('PCA plot for DECIDE');
@@ -126,13 +126,13 @@ pareto(explained);
 xlabel('Principal Component');
 ylabel('Variance Explained (%)');
 title('Scree plot  for DECIDE');
-
+%}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % GO_OUT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-FEATURE_MAT = PCA.getFeatureMatrix_GO_OUT();
+%{
+FEATURE_MAT = PCA.getFeatureMatrix_GO_OUT('go out');
 [coeff1,score,latent,tsquared,explained] = pca(FEATURE_MAT);
 biplot(coeff1(:,1:2),'scores',score(:,1:2),'varlabels',{'v_1','v_2','v_3', 'v_4'});
 title('PCA plot for GO OUT');
@@ -144,15 +144,15 @@ xlabel('Principal Component');
 ylabel('Variance Explained (%)');
 title('Scree plot  for GO OUT');
 
-
+%}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FIND
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-FEATURE_MAT = PCA.getFeatureMatrix_FIND();
+%{
+FEATURE_MAT = PCA.getFeatureMatrix_FIND('find');
 [coeff1,score,latent,tsquared,explained] = pca(FEATURE_MAT);
 biplot(coeff1(1:4,1:2),'scores',score(1:4,1:2),'varlabels',{'v_1','v_2','v_3', 'v_4'});
 title('PCA plot for FIND');
@@ -162,13 +162,14 @@ pareto(explained);
 xlabel('Principal Component');
 ylabel('Variance Explained (%)');
 title('Scree plot  for FIND');
-
+%}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FATHER
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-FEATURE_MAT = PCA.getFeatureMatrix_FATHER();
+%{
+FEATURE_MAT = PCA.getFeatureMatrix_FATHER('father');
 [coeff1,score,latent,tsquared,explained] = pca(FEATURE_MAT);
 biplot(coeff1(1:3,1:2),'scores',score(1:3,1:2),'varlabels',{'v_1','v_2','v_3'});
 %biplot(coeff1(28:30,1:2),'scores',score(28:30,1:2),'varlabels',{'v_1','v_2','v_3'});
@@ -181,4 +182,4 @@ xlabel('Principal Component');
 ylabel('Variance Explained (%)');
 title('Scree plot  for FATHER');
 
-
+%}

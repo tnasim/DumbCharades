@@ -17,7 +17,7 @@ classdef PCA
             MaxCol = 55;
             l = uint32(sensor);
             dirListing = dir(PCA.IntermediateDataDir);
-            
+            disp(gesture);
             for i = 3:length(dirListing)
                 tempFoldername = dirListing(i).name;
                 %disp(tempFoldername);
@@ -31,9 +31,13 @@ classdef PCA
                     else
                     %}
                         fileName = [PCA.IntermediateDataDir,'/',tempFoldername,'/',gesture,'.csv'];
+                        if ischar(fileName)==0
+                            fileName = strjoin(fileName, '');
+                        end
                     %end
+                    disp(fileName);
                     if exist(fileName, 'file') == 2
-                        temp = csvread([PCA.IntermediateDataDir,'/',tempFoldername,'/',gesture,'.csv'],0, 0);
+                        temp = csvread(fileName,0, 0);
                         [x,z] = size(temp);
                         %disp([x, z]);
                         
@@ -92,8 +96,8 @@ classdef PCA
         
         % Creating Feature Matrix for ABOUT.
         % appending the features MAD(OPR), RMS(OPR) and MAD(EMG0R)
-        function FEATURE_MAT = getFeatureMatrix_ABOUT()
-            gest = 'about';
+        function FEATURE_MAT = getFeatureMatrix_ABOUT(gest)
+            %gest = 'about';
             
             M = PCA.readOneSensorData(gest, Sensor.OPR);
 
@@ -109,8 +113,8 @@ classdef PCA
         end
         
         % Creating Feature Matrix for FATHER.
-        function FEATURE_MAT = getFeatureMatrix_FATHER()
-            gest = 'father';
+        function FEATURE_MAT = getFeatureMatrix_FATHER(gest)
+            %gest = 'father';
             
             M1 = PCA.readOneSensorData(gest, Sensor.ARY);
 
@@ -128,8 +132,8 @@ classdef PCA
         end
         
         % Creating Feature Matrix for AND.
-        function FEATURE_MAT = getFeatureMatrix_AND()
-            gest = 'and';
+        function FEATURE_MAT = getFeatureMatrix_AND(gest)
+            %gest = 'and';
             
             M = PCA.readOneSensorData(gest, Sensor.ARX);
 
@@ -152,8 +156,8 @@ classdef PCA
         
         
         % Creating Feature Matrix for CAN.
-        function FEATURE_MAT = getFeatureMatrix_CAN()
-            gest = 'can';
+        function FEATURE_MAT = getFeatureMatrix_CAN(gest)
+            %gest = 'can';
             
             % TODO -- xcorr
             
@@ -177,8 +181,8 @@ classdef PCA
         end
         
         % Creating Feature Matrix for FIND.
-        function FEATURE_MAT = getFeatureMatrix_FIND()
-            gest = 'find';
+        function FEATURE_MAT = getFeatureMatrix_FIND(gest)
+            %gest = 'find';
             
             M = PCA.readOneSensorData(gest, Sensor.GRY);
 
@@ -200,8 +204,8 @@ classdef PCA
         end
         
         % Creating Feature Matrix for COP.
-        function FEATURE_MAT = getFeatureMatrix_COP()
-            gest = 'cop';
+        function FEATURE_MAT = getFeatureMatrix_COP(gest)
+            %gest = 'cop';
             
             M = PCA.readOneSensorData(gest, Sensor.ARZ);
 
@@ -219,8 +223,8 @@ classdef PCA
         end
         
         % Creating Feature Matrix for DEAF.
-        function FEATURE_MAT = getFeatureMatrix_DEAF()
-            gest = 'deaf';
+        function FEATURE_MAT = getFeatureMatrix_DEAF(gest)
+            %gest = 'deaf';
             
             % TODO -- xcorr
             
@@ -244,8 +248,8 @@ classdef PCA
         end
         
         % Creating Feature Matrix for DECIDE.
-        function FEATURE_MAT = getFeatureMatrix_DECIDE()
-            gest = 'decide';
+        function FEATURE_MAT = getFeatureMatrix_DECIDE(gest)
+            %gest = 'decide';
             
             M = PCA.readOneSensorData(gest, Sensor.ALY);
 
@@ -268,8 +272,8 @@ classdef PCA
         
         
         % Creating Feature Matrix for GO OUT.
-        function FEATURE_MAT = getFeatureMatrix_GO_OUT()
-            gest = 'go out';
+        function FEATURE_MAT = getFeatureMatrix_GO_OUT(gest)
+            %gest = 'go out';
             
             M = PCA.readOneSensorData(gest, Sensor.EMG0R);
 
@@ -291,8 +295,8 @@ classdef PCA
         end
         
         % Creating Feature Matrix for HEARING.
-        function FEATURE_MAT = getFeatureMatrix_HEARING()
-            gest = 'hearing';
+        function FEATURE_MAT = getFeatureMatrix_HEARING(gest)
+            %gest = 'hearing';
             
             M = PCA.readOneSensorData(gest, Sensor.OPR);
 

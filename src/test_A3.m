@@ -1,0 +1,1 @@
+[train, test] = A3.getClassData('and', 80);
