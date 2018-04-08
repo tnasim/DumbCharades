@@ -1,3 +1,4 @@
+
 classdef Sensor < uint32
     enumeration
         ALX             (  1)

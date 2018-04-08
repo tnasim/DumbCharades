@@ -9,7 +9,7 @@ addpath('./util/');
 
 folderName = {'DM01','DM07','DM09','DM13','DM16','DM19','DM20','DM22','DM23','DM26','DM27','DM31','DM32','DM34'};
 words = {'about','and','can','cop','deaf','decide','father','find','go out', 'goout','go_out','hearing'};
-for j = 1:14
+for j = 11:14
     x = [dataBaseDir,'\\Original\\',folderName{j}];
     dirListing = dir(x);
     for i = 1:length(dirListing)
