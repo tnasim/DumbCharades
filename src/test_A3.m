@@ -3,9 +3,10 @@
 acc = [];
 for i = 1:10
     gest = A3.gestList(1);
-    [train, test] = A3.getClassData(gest(i), 80);
-    rowT = calcTreeMod(train(:,1:3),train(:,4), test(:,1:3), test(:,4));
-    rowS = calcSVMMod(train(:,1:3),train(:,4), test(:,1:3), test(:,4));
+    [train, test] = A3.getClassData(gest(i), 60);
+    [~,m] = size(train);
+    rowT = calcTreeMod(train(:,1:(m-1)),train(:,m), test(:,1:(m-1)), test(:,m));
+    rowS = calcSVMMod(train(:,1:(m-1)),train(:,m), test(:,1:(m-1)), test(:,m));
     acc = [acc;[gest(i), rowT, rowS]];
 end
 disp(acc);

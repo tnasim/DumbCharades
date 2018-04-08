@@ -8,6 +8,19 @@ classdef A3
     methods (Static)
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        % Get negative classes. pick only half of the total P values
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        function a = getFilteredNegativeClasses(P)
+            result = []
+            [n,~] = size(P)
+            for i = 1:2:n
+                result = [result;P(i,:)];
+            end
+            a = result;
+        end
+        
+        
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         % Get labeled feature matrix for a particular gesture.
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         function [train, test] = getClassData(gesture, trainPercent)
@@ -24,7 +37,8 @@ classdef A3
                         gest = A3.gestList(i);
                         if(gest ~= gesture)
                             disp(['Reading data for ', gest]);
-                            P = [P; PCA.getFeatureMatrix_ABOUT(gest)];
+                            X = PCA.getFeatureMatrix_ABOUT(gest);
+                            P = [P; A3.getFilteredNegativeClasses(X)];
                         end
                     end
                 case 'and'
@@ -38,7 +52,8 @@ classdef A3
                         gest = A3.gestList(i);
                         if(gest ~= gesture)
                             disp(['Reading data for ', gest]);
-                            P = [P; PCA.getFeatureMatrix_AND(gest)];
+                            X = PCA.getFeatureMatrix_AND(gest);
+                            P = [P; A3.getFilteredNegativeClasses(X)];
                         end
                     end
                 case 'can'
@@ -52,7 +67,8 @@ classdef A3
                         gest = A3.gestList(i);
                         if(gest ~= gesture)
                             disp(['Reading data for ', gest]);
-                            P = [P; PCA.getFeatureMatrix_CAN(gest)];
+                            X = PCA.getFeatureMatrix_CAN(gest);
+                            P = [P; A3.getFilteredNegativeClasses(X)];
                         end
                     end
                 case 'cop'
@@ -66,7 +82,8 @@ classdef A3
                         gest = A3.gestList(i);
                         if(gest ~= gesture)
                             disp(['Reading data for ', gest]);
-                            P = [P; PCA.getFeatureMatrix_COP(gest)];
+                            X = PCA.getFeatureMatrix_COP(gest);
+                            P = [P; A3.getFilteredNegativeClasses(X)];
                         end
                     end
                     
@@ -81,7 +98,8 @@ classdef A3
                         gest = A3.gestList(i);
                         if(gest ~= gesture)
                             disp(['Reading data for ', gest]);
-                            P = [P; PCA.getFeatureMatrix_DEAF(gest)];
+                            X = PCA.getFeatureMatrix_DEAF(gest);
+                            P = [P; A3.getFilteredNegativeClasses(X)];
                         end
                     end
                 case 'decide'
@@ -95,7 +113,8 @@ classdef A3
                         gest = A3.gestList(i);
                         if(gest ~= gesture)
                             disp(['Reading data for ', gest]);
-                            P = [P; PCA.getFeatureMatrix_DECIDE(gest)];
+                            X = PCA.getFeatureMatrix_DECIDE(gest);
+                            P = [P; A3.getFilteredNegativeClasses(X)];
                         end
                     end
                 case 'father'
@@ -109,7 +128,8 @@ classdef A3
                         gest = A3.gestList(i);
                         if(gest ~= gesture)
                             disp(['Reading data for ', gest]);
-                            P = [P; PCA.getFeatureMatrix_FATHER(gest)];
+                            X = PCA.getFeatureMatrix_FATHER(gest);
+                            P = [P; A3.getFilteredNegativeClasses(X)];
                         end
                     end
                 case 'find'
@@ -123,7 +143,8 @@ classdef A3
                         gest = A3.gestList(i);
                         if(gest ~= gesture)
                             disp(['Reading data for ', gest]);
-                            P = [P; PCA.getFeatureMatrix_AND(gest)];
+                            X = PCA.getFeatureMatrix_AND(gest);
+                            P = [P; A3.getFilteredNegativeClasses(X)];
                         end
                     end
                 case 'go out'
@@ -137,7 +158,8 @@ classdef A3
                         gest = A3.gestList(i);
                         if(gest ~= gesture)
                             disp(['Reading data for ', gest]);
-                            P = [P; PCA.getFeatureMatrix_GO_OUT(gest)];
+                            X = PCA.getFeatureMatrix_GO_OUT(gest);
+                            P = [P; A3.getFilteredNegativeClasses(X)];
                         end
                     end
                 case 'hearing'
@@ -151,7 +173,8 @@ classdef A3
                         gest = A3.gestList(i);
                         if(gest ~= gesture)
                             disp(['Reading data for ', gest]);
-                            P = [P; PCA.getFeatureMatrix_HEARING(gest)];
+                            X = PCA.getFeatureMatrix_HEARING(gest);
+                            P = [P; A3.getFilteredNegativeClasses(X)];
                         end
                     end
                 otherwise
